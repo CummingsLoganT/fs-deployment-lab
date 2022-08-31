@@ -1,10 +1,16 @@
 const express = require('express');
-// const cors = require('cors');
+const path = require('path')
+
 
 const app = express();
 
-app.use(express.json());
-// app.use(cors());
+app.get('/' , function (req , res) {
+    res.sendFile(path.join(__dirname , '../index.html'))
+});
+
+const port = process.env.PORT || 9006;
 
 
-app.listen(6009 , () => console.log(`on port 6009`))
+app.listen(port , () => {
+    console.log(`on port ${port}`);
+})
